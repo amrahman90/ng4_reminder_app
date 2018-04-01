@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <h3 align="center">Reminder Pro</h3>
+
+            <table class="table ">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input [(ngModel)]="task" class="form-control" placeholder="I have to..." type="text" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <!-- <input id="date-input" [(ngModel)]="time" class="form-control" type="date"/> -->
+                                <input [(ngModel)]="time" class="form-control" [owlDateTime]="time1" [owlDateTimeTrigger]="time1" placeholder="Enter Date and Time">
+                                <owl-date-time #time1></owl-date-time>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-success" (click)="toggleItemAdd()">
+                                <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Add This
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-responsive ">
+                <tbody>
+                    <tr *ngFor="let item of data; let index=index" style="border: 1px;border-color: #ddd;border-style: solid;">
+                        <td style="border:0">
+                            <b> {{item.displayTask}} </b>
+                            <br>
+                            <i> {{item.displayLeftTime}}</i>
+                        </td>
+                        <td style="text-align:right;border:0">
+                            <button class="btn btn-danger btn-xs" (click)="deleteItem(index)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <tr>
+                    <td>
+                        <button class="btn btn-danger" (click)="clearAll()">
+                            <span class="glyphicon glyphicon-item"></span>Clear All
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+            <hr>
+        </div>
+    </div>
+</div>
